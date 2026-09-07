@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/site/Section";
 import { Eyebrow, SectionHeader, Frame } from "@/components/site/Bits";
 import { Button } from "@/components/site/Button";
-import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { Accordion } from "@/components/site/Accordion";
 import { LatentField } from "@/components/viz/LatentField";
 import { SystemDiagram } from "@/components/viz/SystemDiagram";
@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
-        <div className="grid-paper absolute inset-0 mask-b opacity-60" />
+        <div className="rule-grid absolute inset-0 mask-b opacity-60" />
         <div className="absolute inset-0 opacity-75">
           <LatentField density={0.55} />
         </div>
@@ -27,14 +27,14 @@ export default function AboutPage() {
             <Eyebrow>About the lab</Eyebrow>
           </Reveal>
           <Reveal immediate delay={0.06}>
-            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink-900">
+            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink">
               We build the thing,
               <br />
               then we say what it did.
             </h1>
           </Reveal>
           <Reveal immediate delay={0.12}>
-            <p className="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-600/90 sm:text-lg">
+            <p className="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-dim sm:text-lg">
               {SITE.name} is an AI research company. We make practical tools and
               publish what we learn making them — the useful results and the
               dead ends alike.
@@ -53,7 +53,7 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="space-y-6 text-[1.0625rem] leading-relaxed text-ink-600/90">
+            <div className="space-y-6 text-[1.0625rem] leading-relaxed text-dim">
               <p>
                 A teacher with forty students cannot diagnose forty different
                 misconceptions in one period, so the class moves on and the gap
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 it are usually optimised for engagement rather than for the
                 outcome that justified building them.
               </p>
-              <p className="font-editorial text-[clamp(1.35rem,2.8vw,1.85rem)] leading-[1.25] tracking-[-0.02em] text-ink-900">
+              <p className="font-display text-[clamp(1.35rem,2.8vw,1.85rem)] leading-[1.25] tracking-[-0.02em] text-ink">
                 We started Eullar to work on the version of these problems that
                 shows up in a real classroom in Accra and a real application
                 queue — not the version that fits neatly in a benchmark.
@@ -86,7 +86,7 @@ export default function AboutPage() {
       </Section>
 
       {/* principles */}
-      <Section id="principles" className="border-t border-line bg-mist/40 py-24 sm:py-32">
+      <Section id="principles" tone="paper" className="py-24 sm:py-32">
         <Reveal>
           <SectionHeader
             eyebrow="Principles"
@@ -98,15 +98,15 @@ export default function AboutPage() {
         <RevealGroup className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
           {PRINCIPLES.map((p) => (
             <RevealItem key={p.n}>
-              <div className="group relative h-full bg-white p-7 transition-colors duration-400 hover:bg-turq-50/60">
-                <span className="font-mono text-[0.6875rem] text-turq-500">{p.n}</span>
-                <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-ink-900">
+              <div className="group relative h-full bg-surface-2 p-7 transition-colors duration-400 hover:bg-accent-soft">
+                <span className="font-mono text-[0.6875rem] text-accent">{p.n}</span>
+                <h3 className="mt-4 font-sans text-[1.0625rem] font-medium leading-snug text-ink">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-[0.875rem] leading-relaxed text-ink-600/85">
+                <p className="mt-3 text-[0.875rem] leading-relaxed text-dim">
                   {p.body}
                 </p>
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-turq-400 transition-all duration-500 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
               </div>
             </RevealItem>
           ))}
@@ -131,7 +131,7 @@ export default function AboutPage() {
       </Section>
 
       {/* faq */}
-      <Section className="border-t border-line bg-mist/40 py-24 sm:py-32">
+      <Section tone="paper" className="py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal>
             <div className="lg:sticky lg:top-28">
@@ -145,16 +145,16 @@ export default function AboutPage() {
       </Section>
 
       {/* place */}
-      <section className="relative overflow-hidden border-t border-line bg-ink-900 py-24 sm:py-28">
-        <div className="dot-field-dark absolute inset-0 opacity-40" />
+      <section className="relative overflow-hidden border-t border-line bg-ink py-24 sm:py-28">
+        <div className="dotfield absolute inset-0 opacity-40" />
         <div className="relative mx-auto max-w-[86rem] px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <Eyebrow onDark>Where we are</Eyebrow>
-              <h2 className="mt-6 text-[clamp(1.9rem,4.6vw,3.25rem)] font-semibold leading-[1.03] text-white">
+              <Eyebrow>Where we are</Eyebrow>
+              <h2 className="mt-6 text-[clamp(1.9rem,4.6vw,3.25rem)] font-semibold leading-[1.03] text-surface">
                 Accra, and wherever the deployment is.
               </h2>
-              <p className="mt-6 max-w-lg text-[1.0625rem] leading-relaxed text-white/55">
+              <p className="mt-6 max-w-lg text-[1.0625rem] leading-relaxed text-dim">
                 Building from West Africa is a design constraint before it is an
                 origin story: intermittent connectivity, large classes, price
                 sensitivity, and multilingual classrooms are the default case
@@ -162,11 +162,11 @@ export default function AboutPage() {
                 up everywhere else.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button href="/contact" variant="onDark">Work with us</Button>
+                <Button href="/contact" variant="primary">Work with us</Button>
               </div>
             </div>
 
-            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:justify-self-end">
+            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-surface-2/10 lg:justify-self-end">
               {[
                 ["founded", String(SITE.founded)],
                 ["base", "Accra, GH"],
@@ -175,9 +175,9 @@ export default function AboutPage() {
                 ["products", "Syllabi · Reevue"],
                 ["team", "research = product"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-ink-900 px-5 py-5">
-                  <dt className="mono-label text-[0.5625rem] text-white/35">{k}</dt>
-                  <dd className="mt-1.5 font-mono text-[0.8125rem] text-turq-300">{v}</dd>
+                <div key={k} className="bg-ink px-5 py-5">
+                  <dt className="mono-label text-[0.5625rem] text-faint">{k}</dt>
+                  <dd className="mt-1.5 font-mono text-[0.8125rem] text-accent">{v}</dd>
                 </div>
               ))}
             </dl>

@@ -60,25 +60,26 @@ export function ResearchTerminal({ className }: { className?: string }) {
   }, [active, reduce, shown, chars]);
 
   const tone = {
-    dim: "text-white/45",
-    ok: "text-turq-300",
-    warn: "text-amber-400",
-    in: "text-white",
+    dim: "text-faint",
+    ok: "text-accent",
+    warn: "text-clay",
+    in: "text-ink",
   };
 
   return (
     <div
       ref={boxRef}
+      data-skin="ink"
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/10 bg-ink-950",
+        "relative overflow-hidden rounded-2xl border border-line-2 bg-surface text-ink shadow-[0_30px_70px_-40px_rgba(0,0,0,0.55)]",
         className,
       )}
     >
-      <div className="flex items-center gap-2 border-b border-white/8 px-4 py-2.5">
-        <span className="size-2 rounded-full bg-coral-500/70" />
-        <span className="size-2 rounded-full bg-amber-400/70" />
-        <span className="size-2 rounded-full bg-turq-400/70" />
-        <span className="ml-2 font-mono text-[0.625rem] tracking-widest text-white/30 uppercase">
+      <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
+        <span className="size-2 rounded-full bg-[var(--data-clay)]/70" />
+        <span className="size-2 rounded-full bg-clay/70" />
+        <span className="size-2 rounded-full bg-accent/70" />
+        <span className="ml-2 font-mono text-[0.625rem] tracking-widest text-faint uppercase">
           eullar · eval
         </span>
       </div>
@@ -87,12 +88,12 @@ export function ResearchTerminal({ className }: { className?: string }) {
           const text = i === visible ? l.t.slice(0, chars) : l.t;
           return (
             <div key={i} className="flex gap-2">
-              <span className="shrink-0 text-turq-500/50">
+              <span className="shrink-0 text-accent/50">
                 {l.tone === "in" ? "›" : " "}
               </span>
               <span className={cn(tone[l.tone ?? "dim"], "break-words")}>
                 {text}
-                {i === visible && <span className="animate-blink text-turq-400">▍</span>}
+                {i === visible && <span className="animate-blink text-accent">▍</span>}
               </span>
             </div>
           );

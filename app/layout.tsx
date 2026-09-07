@@ -1,26 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Geist, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Instrument_Sans, Martian_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { ScrollProgress, Grain, CursorHalo } from "@/components/site/Chrome";
+import { ScrollProgress, Grain } from "@/components/site/Chrome";
 import { SITE } from "@/lib/content";
 
-const display = Space_Grotesk({
-  variable: "--font-space-grotesk",
+/* An optical-size serif with the WONK axis on — warm and clearly drawn by a
+   person, which is the opposite of the default geometric-sans look. */
+const display = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+  display: "swap",
+});
+
+const sans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const sans = Geist({
-  variable: "--font-geist-sans",
+const mono = Martian_Mono({
+  variable: "--font-martian-mono",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 
@@ -55,31 +59,28 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#04191B" },
-  ],
-  colorScheme: "light",
+  themeColor: "#0b1413",
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-skin="ink"
       data-scroll-behavior="smooth"
       className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-paper">
+      <body className="flex min-h-full flex-col">
         {/* Scroll-reveal wrappers render hidden and are animated in by JS.
             Without JS there is nothing to animate them, so unhide them. */}
         <noscript>
-          <style>{`[data-reveal]{opacity:1!important;filter:none!important;transform:none!important}`}</style>
+          <style>{`[data-reveal]{opacity:1!important;filter:none!important;transform:none!important;clip-path:none!important}`}</style>
         </noscript>
         <ScrollProgress />
         <Grain />
-        <CursorHalo />
         <Nav />
-        <main className="relative z-10 grow">{children}</main>
+        <main className="relative grow">{children}</main>
         <Footer />
       </body>
     </html>

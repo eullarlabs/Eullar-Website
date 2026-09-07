@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           If you are a learner or an applicant, your first route is the school or
           employer that holds your relationship. If you cannot reach them, write
           to{" "}
-          <a className="text-turq-700 underline decoration-turq-300 underline-offset-4" href={`mailto:${SITE.email}`}>
+          <a className="text-accent underline decoration-accent/60 underline-offset-4" href={`mailto:${SITE.email}`}>
             {SITE.email}
           </a>{" "}
           and we will route it.

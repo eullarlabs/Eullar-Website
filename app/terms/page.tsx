@@ -49,7 +49,7 @@ export default function TermsPage() {
       <Clause n="05" title="Contact">
         <p>
           Questions about these terms:{" "}
-          <a className="text-turq-700 underline decoration-turq-300 underline-offset-4" href={`mailto:${SITE.email}`}>
+          <a className="text-accent underline decoration-accent/60 underline-offset-4" href={`mailto:${SITE.email}`}>
             {SITE.email}
           </a>
           . {SITE.name}, {SITE.location}.

@@ -116,9 +116,9 @@ function curve(a: CNode, b: CNode) {
 }
 
 function masteryTone(v: number) {
-  if (v >= 0.75) return { fill: "var(--color-turq-500)", ring: "var(--color-turq-200)", text: "#fff" };
-  if (v >= 0.5) return { fill: "var(--color-turq-200)", ring: "var(--color-turq-100)", text: "var(--color-ink-900)" };
-  return { fill: "#fff", ring: "var(--color-data-flag)", text: "var(--color-ink-900)" };
+  if (v >= 0.75) return { fill: "var(--accent)", ring: "var(--accent-soft)", text: "#fff" };
+  if (v >= 0.5) return { fill: "var(--accent-soft)", ring: "var(--accent-soft)", text: "var(--ink)" };
+  return { fill: "var(--surface-2)", ring: "var(--data-clay)", text: "var(--ink)" };
 }
 
 export function ConceptGraph() {
@@ -150,9 +150,9 @@ export function ConceptGraph() {
   const hovered = hover ? byId(hover) : null;
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-line bg-white">
+    <div className="overflow-hidden rounded-3xl border border-line bg-surface-2">
       {/* Profile switcher */}
-      <div className="flex flex-col gap-3 border-b border-line bg-mist/60 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+      <div className="flex flex-col gap-3 border-b border-line bg-surface-3/70 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
         <div className="flex flex-wrap gap-1.5">
           {PROFILES.map((pr, i) => (
             <button
@@ -160,13 +160,13 @@ export function ConceptGraph() {
               onClick={() => setActive(i)}
               className={cn(
                 "relative rounded-full px-3.5 py-2 text-left text-[0.8125rem] font-medium transition-colors",
-                i === active ? "text-white" : "text-ink-600 hover:text-ink-900",
+                i === active ? "text-surface" : "text-dim hover:text-ink",
               )}
             >
               {i === active && (
                 <motion.span
                   layoutId="cg-pill"
-                  className="absolute inset-0 rounded-full bg-ink-900"
+                  className="absolute inset-0 rounded-full bg-ink"
                   transition={{ type: "spring", stiffness: 380, damping: 32 }}
                 />
               )}
@@ -174,7 +174,7 @@ export function ConceptGraph() {
             </button>
           ))}
         </div>
-        <p className="mono-label text-ink-600/60">
+        <p className="mono-label text-faint">
           fig. 1 — prerequisite graph, live re-plan
         </p>
       </div>
@@ -182,7 +182,7 @@ export function ConceptGraph() {
       <div className="grid lg:grid-cols-[1.55fr_1fr]">
         {/* Graph */}
         <div className="no-scrollbar relative min-w-0 overflow-x-auto border-b border-line lg:border-b-0 lg:border-r">
-          <div className="grid-paper-fine absolute inset-0 opacity-50" />
+          <div className="rule-grid-fine absolute inset-0 opacity-50" />
           <svg
             viewBox="0 0 736 430"
             className="relative block h-auto w-full min-w-[600px]"
@@ -191,7 +191,7 @@ export function ConceptGraph() {
           >
             <defs>
               <marker id="cg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-turq-600)" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
               </marker>
               <filter id="cg-glow" x="-60%" y="-60%" width="220%" height="220%">
                 <feGaussianBlur stdDeviation="6" result="b" />
@@ -212,7 +212,7 @@ export function ConceptGraph() {
                   key={key}
                   d={curve(byId(a), byId(b))}
                   fill="none"
-                  stroke={isRoute ? "var(--color-turq-500)" : "var(--color-line-strong)"}
+                  stroke={isRoute ? "var(--accent)" : "var(--line-2)"}
                   strokeWidth={isRoute ? 2 : 1.25}
                   opacity={dim ? 0.25 : 1}
                   className="transition-all duration-500"
@@ -226,7 +226,7 @@ export function ConceptGraph() {
                 key={p.id}
                 d={routePath}
                 fill="none"
-                stroke="var(--color-turq-400)"
+                stroke="var(--accent)"
                 strokeWidth={3.5}
                 strokeLinecap="round"
                 filter="url(#cg-glow)"
@@ -241,7 +241,7 @@ export function ConceptGraph() {
             <motion.circle
               key={`packet-${p.id}`}
               r="4.5"
-              fill="var(--color-turq-600)"
+              fill="var(--accent)"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
@@ -267,10 +267,10 @@ export function ConceptGraph() {
                   style={{ transition: "opacity .35s" }}
                 >
                   {isBlock && (
-                    <circle cx={n.x} cy={n.y} r={26} fill="none" stroke="var(--color-data-flag)" strokeWidth="1.2" strokeDasharray="3 4" className="animate-[spin_18s_linear_infinite]" style={{ transformOrigin: `${n.x}px ${n.y}px` }} />
+                    <circle cx={n.x} cy={n.y} r={26} fill="none" stroke="var(--data-clay)" strokeWidth="1.2" strokeDasharray="3 4" className="animate-[spin_18s_linear_infinite]" style={{ transformOrigin: `${n.x}px ${n.y}px` }} />
                   )}
                   {isGoal && (
-                    <rect x={n.x - 24} y={n.y - 24} width="48" height="48" rx="14" fill="none" stroke="var(--color-ink-900)" strokeWidth="1.2" strokeDasharray="2 5" />
+                    <rect x={n.x - 24} y={n.y - 24} width="48" height="48" rx="14" fill="none" stroke="var(--ink)" strokeWidth="1.2" strokeDasharray="2 5" />
                   )}
                   <motion.circle
                     cx={n.x}
@@ -289,7 +289,7 @@ export function ConceptGraph() {
                     cy={n.y}
                     r={19}
                     fill="none"
-                    stroke="var(--color-turq-600)"
+                    stroke="var(--accent)"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeDasharray={`${v * 2 * Math.PI * 19} ${2 * Math.PI * 19}`}
@@ -301,7 +301,7 @@ export function ConceptGraph() {
                     x={n.x}
                     y={n.y + 38}
                     textAnchor="middle"
-                    className="fill-ink-700 font-mono text-[9.5px] tracking-wide"
+                    className="fill-dim font-mono text-[9.5px] tracking-wide"
                   >
                     {n.label}
                   </text>
@@ -313,11 +313,11 @@ export function ConceptGraph() {
           {/* legend */}
           <div className="pointer-events-none absolute bottom-3 left-4 flex flex-wrap gap-x-4 gap-y-1">
             {[
-              ["var(--color-turq-500)", "secure"],
-              ["var(--color-turq-200)", "partial"],
-              ["var(--color-data-flag)", "gap"],
+              ["var(--accent)", "secure"],
+              ["var(--accent-soft)", "partial"],
+              ["var(--data-clay)", "gap"],
             ].map(([c, l]) => (
-              <span key={l} className="flex items-center gap-1.5 mono-label text-[0.5625rem] text-ink-600/70">
+              <span key={l} className="flex items-center gap-1.5 mono-label text-[0.5625rem] text-dim">
                 <span className="size-2 rounded-full" style={{ background: c as string }} />
                 {l}
               </span>
@@ -335,19 +335,19 @@ export function ConceptGraph() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="mono-label text-turq-600">{p.meta}</p>
+              <p className="mono-label text-accent">{p.meta}</p>
 
-              <div className="mt-5 rounded-xl border border-[var(--color-data-flag)]/25 bg-[var(--color-data-flag)]/[0.045] p-4">
-                <p className="mono-label text-[var(--color-data-flag)]">Blocking concept</p>
-                <p className="mt-1.5 font-display text-xl font-semibold text-ink-900">
+              <div className="mt-5 rounded-xl border border-[var(--data-clay)]/25 bg-[var(--data-clay)]/[0.045] p-4">
+                <p className="mono-label text-[var(--data-clay)]">Blocking concept</p>
+                <p className="mt-1.5 font-display text-xl text-ink">
                   {byId(p.blocking).label}
                 </p>
-                <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-600/85">
+                <p className="mt-2 text-[0.875rem] leading-relaxed text-dim">
                   {p.read}
                 </p>
               </div>
 
-              <p className="mono-label mt-6 text-ink-600/50">
+              <p className="mono-label mt-6 text-faint">
                 Generated route — {p.plan.length} steps
               </p>
               <ol className="mt-3 space-y-3">
@@ -359,11 +359,11 @@ export function ConceptGraph() {
                     transition={{ delay: 0.15 + i * 0.09, duration: 0.4 }}
                     className="flex gap-3"
                   >
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-ink-900 font-mono text-[0.5625rem] text-white">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md bg-ink font-mono text-[0.5625rem] text-surface">
                       {i + 1}
                     </span>
-                    <span className="text-[0.875rem] leading-relaxed text-ink-700">
-                      <span className="font-medium text-ink-900">{s.step}. </span>
+                    <span className="text-[0.875rem] leading-relaxed text-ink">
+                      <span className="font-medium text-ink">{s.step}. </span>
                       {s.detail}
                     </span>
                   </motion.li>
@@ -378,19 +378,19 @@ export function ConceptGraph() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 8 }}
-                className="absolute inset-x-5 bottom-5 rounded-xl border border-line bg-white/95 p-3 shadow-[0_20px_50px_-24px_rgba(4,25,27,0.4)] backdrop-blur sm:inset-x-7"
+                className="absolute inset-x-5 bottom-5 rounded-xl border border-line bg-surface-2/95 p-3 shadow-[0_20px_50px_-24px_rgba(4,25,27,0.4)] backdrop-blur sm:inset-x-7"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[0.75rem] text-ink-900">
+                  <span className="font-mono text-[0.75rem] text-ink">
                     {hovered.label}
                   </span>
-                  <span className="mono-label text-turq-600">
+                  <span className="mono-label text-accent">
                     mastery {(p.mastery[hovered.id] * 100).toFixed(0)}%
                   </span>
                 </div>
-                <div className="mt-2 h-1 overflow-hidden rounded-full bg-haze">
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-surface-3">
                   <motion.div
-                    className="h-full rounded-full bg-turq-500"
+                    className="h-full rounded-full bg-accent"
                     initial={{ width: 0 }}
                     animate={{ width: `${p.mastery[hovered.id] * 100}%` }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

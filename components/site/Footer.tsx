@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { LogoMark } from "./Logo";
+import { Wrap } from "./Skin";
 import { PRODUCTS, SITE } from "@/lib/content";
 
 const columns = [
-  {
-    title: "Products",
-    links: PRODUCTS.map((p) => ({ label: p.name, href: p.href })),
-  },
+  { title: "Products", links: PRODUCTS.map((p) => ({ label: p.name, href: p.href })) },
   {
     title: "Lab",
     links: [
@@ -27,50 +25,38 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink-950 text-white">
-      <div className="grid-paper-dark absolute inset-0 opacity-70" />
-      <div
-        className="absolute -top-40 left-1/2 h-[28rem] w-[52rem] -translate-x-1/2 rounded-full opacity-25 blur-[100px]"
-        style={{
-          background:
-            "radial-gradient(circle, var(--color-turq-400), transparent 65%)",
-        }}
-      />
+    <footer data-skin="ink" className="relative overflow-hidden bg-surface text-ink">
+      <div className="rule-grid absolute inset-0 opacity-70" />
+      <div className="bloom pointer-events-none absolute -top-52 left-1/2 h-[30rem] w-[56rem] -translate-x-1/2 opacity-40" />
 
-      <div className="relative mx-auto max-w-[86rem] px-6 pt-20 pb-10 sm:pt-24">
-        <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <Wrap className="relative pb-10 pt-24">
+        <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <LogoMark className="size-9" />
-              <span className="font-display text-xl font-semibold tracking-tight">
-                Eullar Labs
-              </span>
+              <LogoMark className="size-8 text-accent" />
+              <span className="font-display text-xl">Eullar Labs</span>
             </div>
-            <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-white/55">
-              {SITE.description}
-            </p>
-            <div className="mt-7 flex items-center gap-2.5">
+            <p className="mt-6 max-w-sm leading-relaxed text-dim">{SITE.description}</p>
+            <div className="mt-8 flex items-center gap-2.5">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-turq-400" />
-                <span className="relative inline-flex size-2 rounded-full bg-turq-400" />
+                <span className="absolute inline-flex size-full animate-ring rounded-full bg-accent" />
+                <span className="relative inline-flex size-2 rounded-full bg-accent" />
               </span>
-              <span className="mono-label text-turq-300/90">
-                {SITE.location}
-              </span>
+              <span className="mono-label text-accent">{SITE.location}</span>
             </div>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="mono-label text-white/35">{col.title}</h3>
-              <ul className="mt-5 space-y-3">
+              <h3 className="mono-label text-faint">{col.title}</h3>
+              <ul className="mt-6 space-y-3.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="group inline-flex items-center gap-2 text-[0.9375rem] text-white/70 transition-colors hover:text-turq-300"
+                      className="group inline-flex items-center gap-2 text-[0.9375rem] text-dim transition-colors hover:text-accent"
                     >
-                      <span className="size-1 rounded-full bg-turq-400/0 transition-colors group-hover:bg-turq-400" />
+                      <span className="size-1 rounded-full bg-accent opacity-0 transition-opacity group-hover:opacity-100" />
                       {l.label}
                     </Link>
                   </li>
@@ -80,33 +66,23 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Oversized wordmark, cropped by the viewport edge */}
-        <div
-          aria-hidden
-          className="pointer-events-none mt-16 select-none overflow-hidden"
-        >
-          <div className="font-display text-[clamp(4rem,17vw,15rem)] font-semibold leading-[0.8] tracking-[-0.05em] text-white/[0.055]">
-            EULLAR LABS
+        <div aria-hidden className="pointer-events-none mt-20 select-none overflow-hidden">
+          <div className="font-display text-[clamp(4rem,18vw,16rem)] leading-[0.78] tracking-[-0.05em] text-ink opacity-[0.045]">
+            EULLAR
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="mono-label text-white/35">
-            © {new Date().getFullYear()} {SITE.name} — all rights reserved
+        <div className="mt-8 flex flex-col gap-4 border-t border-line pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="mono-label text-faint">
+            © {new Date().getFullYear()} {SITE.name}
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <Link href="/privacy" className="mono-label text-white/35 transition-colors hover:text-turq-300">
-              Privacy
-            </Link>
-            <Link href="/terms" className="mono-label text-white/35 transition-colors hover:text-turq-300">
-              Terms
-            </Link>
-            <span className="mono-label text-white/25">
-              Built in Accra
-            </span>
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-2">
+            <Link href="/privacy" className="mono-label text-faint transition-colors hover:text-accent">Privacy</Link>
+            <Link href="/terms" className="mono-label text-faint transition-colors hover:text-accent">Terms</Link>
+            <span className="mono-label text-faint opacity-60">Built in Accra</span>
           </div>
         </div>
-      </div>
+      </Wrap>
     </footer>
   );
 }

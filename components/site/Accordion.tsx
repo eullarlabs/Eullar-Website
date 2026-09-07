@@ -24,8 +24,8 @@ export function Accordion({
             >
               <span
                 className={cn(
-                  "font-display text-[1.0625rem] font-medium leading-snug transition-colors sm:text-[1.1875rem]",
-                  isOpen ? "text-turq-700" : "text-ink-900 group-hover:text-turq-700",
+                  "font-sans text-[1.0625rem] font-medium leading-snug transition-colors sm:text-[1.1875rem]",
+                  isOpen ? "text-accent" : "text-ink group-hover:text-accent",
                 )}
               >
                 {it.q}
@@ -35,8 +35,8 @@ export function Accordion({
                 className={cn(
                   "mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full border transition-all duration-400",
                   isOpen
-                    ? "rotate-45 border-turq-400 bg-turq-50 text-turq-700"
-                    : "border-line text-ink-600/50 group-hover:border-turq-300",
+                    ? "rotate-45 border-accent/50 bg-accent-soft text-accent"
+                    : "border-line text-faint group-hover:border-accent/40",
                 )}
               >
                 <svg viewBox="0 0 14 14" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
@@ -50,7 +50,7 @@ export function Accordion({
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="max-w-3xl pb-7 text-[0.9375rem] leading-relaxed text-ink-600/85">
+              <p className="max-w-3xl pb-7 text-[0.9375rem] leading-relaxed text-dim">
                 {it.a}
               </p>
             </motion.div>

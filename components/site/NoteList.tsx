@@ -6,11 +6,11 @@ import type { Note } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const areaTone: Record<Note["area"], string> = {
-  Alignment: "text-iris-500 border-iris-400/30 bg-iris-500/[0.06]",
-  Evaluation: "text-turq-700 border-turq-200 bg-turq-50",
-  "Learning science": "text-turq-700 border-turq-200 bg-turq-50",
-  Systems: "text-ink-600 border-line bg-mist",
-  Interpretability: "text-iris-500 border-iris-400/30 bg-iris-500/[0.06]",
+  Alignment: "text-clay border-clay/30 bg-clay/10",
+  Evaluation: "text-accent border-accent/30 bg-accent-soft",
+  "Learning science": "text-accent border-accent/30 bg-accent-soft",
+  Systems: "text-dim border-line bg-surface-3",
+  Interpretability: "text-clay border-clay/30 bg-clay/10",
 };
 
 export function NoteList({ notes }: { notes: Note[] }) {
@@ -27,15 +27,15 @@ export function NoteList({ notes }: { notes: Note[] }) {
               aria-expanded={isOpen}
               className="group grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 py-6 text-left transition-colors sm:gap-6 sm:py-7"
             >
-              <span className="mt-1 font-mono text-[0.6875rem] tabular-nums text-ink-600/45 sm:w-24">
+              <span className="mt-1 font-mono text-[0.6875rem] tabular-nums text-faint sm:w-24">
                 {n.id}
               </span>
 
               <span className="min-w-0">
                 <span
                   className={cn(
-                    "block font-display text-[1.0625rem] font-medium leading-snug transition-colors sm:text-[1.25rem]",
-                    isOpen ? "text-turq-700" : "text-ink-900 group-hover:text-turq-700",
+                    "block font-sans text-[1.0625rem] font-medium leading-snug transition-colors sm:text-[1.25rem]",
+                    isOpen ? "text-accent" : "text-ink group-hover:text-accent",
                   )}
                 >
                   {n.title}
@@ -49,7 +49,7 @@ export function NoteList({ notes }: { notes: Note[] }) {
                   >
                     {n.area}
                   </span>
-                  <span className="mono-label text-[0.5625rem] text-ink-600/45">
+                  <span className="mono-label text-[0.5625rem] text-faint">
                     {n.status} · {n.date}
                   </span>
                 </span>
@@ -60,7 +60,7 @@ export function NoteList({ notes }: { notes: Note[] }) {
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="block overflow-hidden"
                 >
-                  <span className="block max-w-2xl pt-4 text-[0.9375rem] leading-relaxed text-ink-600/85">
+                  <span className="block max-w-2xl pt-4 text-[0.9375rem] leading-relaxed text-dim">
                     {n.abstract}
                   </span>
                 </motion.span>
@@ -70,8 +70,8 @@ export function NoteList({ notes }: { notes: Note[] }) {
                 className={cn(
                   "mt-1 flex size-7 shrink-0 items-center justify-center rounded-full border transition-all duration-400",
                   isOpen
-                    ? "rotate-45 border-turq-400 bg-turq-50 text-turq-700"
-                    : "border-line text-ink-600/50 group-hover:border-turq-300 group-hover:text-turq-600",
+                    ? "rotate-45 border-accent/50 bg-accent-soft text-accent"
+                    : "border-line text-faint group-hover:border-accent/40 group-hover:text-accent",
                 )}
                 aria-hidden
               >

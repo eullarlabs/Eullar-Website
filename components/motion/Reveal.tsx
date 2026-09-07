@@ -10,8 +10,7 @@ type Props = {
   delay?: number;
   y?: number;
   once?: boolean;
-  /** Animate on mount instead of on scroll — for above-the-fold content, which
-      must never depend on an IntersectionObserver that may not fire. */
+  /** Animate on mount instead of on scroll — for above-the-fold content. */
   immediate?: boolean;
 };
 
@@ -19,20 +18,19 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  y = 22,
+  y = 26,
   once = true,
   immediate = false,
 }: Props) {
   const reduce = useReducedMotion();
 
   const variants: Variants = {
-    hidden: { opacity: 0, y: reduce ? 0 : y, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: reduce ? 0 : y },
     show: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
-        duration: reduce ? 0.01 : 0.75,
+        duration: reduce ? 0.01 : 0.9,
         delay: reduce ? 0 : delay,
         ease: [0.16, 1, 0.3, 1],
       },
@@ -47,21 +45,17 @@ export function Reveal({
       initial="hidden"
       {...(immediate
         ? { animate: "show" }
-        : {
-            whileInView: "show",
-            viewport: { once, margin: "-12% 0px -8% 0px" },
-          })}
+        : { whileInView: "show", viewport: { once, margin: "-10% 0px -6% 0px" } })}
     >
       {children}
     </motion.div>
   );
 }
 
-/** Staggers direct children that use `RevealItem`. */
 export function RevealGroup({
   children,
   className,
-  stagger = 0.08,
+  stagger = 0.09,
   delay = 0,
 }: {
   children: ReactNode;
@@ -74,7 +68,7 @@ export function RevealGroup({
       className={cn(className)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-10% 0px" }}
+      viewport={{ once: true, margin: "-8% 0px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger, delayChildren: delay } },
@@ -88,7 +82,7 @@ export function RevealGroup({
 export function RevealItem({
   children,
   className,
-  y = 18,
+  y = 22,
 }: {
   children: ReactNode;
   className?: string;
@@ -104,7 +98,7 @@ export function RevealItem({
         show: {
           opacity: 1,
           y: 0,
-          transition: { duration: reduce ? 0.01 : 0.7, ease: [0.16, 1, 0.3, 1] },
+          transition: { duration: reduce ? 0.01 : 0.8, ease: [0.16, 1, 0.3, 1] },
         },
       }}
     >

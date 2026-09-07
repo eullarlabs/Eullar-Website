@@ -47,9 +47,9 @@ export function AttentionGrid() {
   const pad = 58;
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-line bg-white">
-      <div className="flex flex-col gap-3 border-b border-line bg-mist/60 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
-        <p className="mono-label text-ink-600/60">
+    <div className="overflow-hidden rounded-3xl border border-line bg-surface-2">
+      <div className="flex flex-col gap-3 border-b border-line bg-surface-3/70 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+        <p className="mono-label text-faint">
           fig. 2 — attention over a solved-example prompt
         </p>
         <div className="flex flex-wrap gap-1">
@@ -59,11 +59,11 @@ export function AttentionGrid() {
               onClick={() => setHead(h.id)}
               className={cn(
                 "relative rounded-full px-3 py-1.5 font-mono text-[0.6875rem] transition-colors",
-                head === h.id ? "text-white" : "text-ink-600 hover:text-ink-900",
+                head === h.id ? "text-surface" : "text-dim hover:text-ink",
               )}
             >
               {head === h.id && (
-                <motion.span layoutId="ag-pill" className="absolute inset-0 rounded-full bg-ink-900" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
+                <motion.span layoutId="ag-pill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
               )}
               <span className="relative">head·{h.id}</span>
             </button>
@@ -89,7 +89,7 @@ export function AttentionGrid() {
                 transform={`rotate(-58 ${pad + j * size + size / 2} ${pad - 10})`}
                 className={cn(
                   "font-mono text-[9px] transition-colors",
-                  cell?.j === j ? "fill-turq-700" : "fill-ink-700/45",
+                  cell?.j === j ? "fill-accent" : "fill-faint",
                 )}
               >
                 {t}
@@ -104,7 +104,7 @@ export function AttentionGrid() {
                 textAnchor="end"
                 className={cn(
                   "font-mono text-[9px] transition-colors",
-                  cell?.i === i ? "fill-turq-700" : "fill-ink-700/45",
+                  cell?.i === i ? "fill-accent" : "fill-faint",
                 )}
               >
                 {t}
@@ -125,10 +125,10 @@ export function AttentionGrid() {
                     rx={4}
                     fill={
                       masked
-                        ? "var(--color-haze)"
-                        : `color-mix(in oklab, var(--color-data-teal) ${Math.min(100, v * 260)}%, white)`
+                        ? "var(--surface-3)"
+                        : `color-mix(in oklab, var(--data-teal) ${Math.min(100, v * 260)}%, white)`
                     }
-                    stroke={cell?.i === i && cell?.j === j ? "var(--color-ink-900)" : "transparent"}
+                    stroke={cell?.i === i && cell?.j === j ? "var(--ink)" : "transparent"}
                     strokeWidth="1.5"
                     opacity={cell && !active ? 0.35 : 1}
                     onMouseEnter={() => setCell({ i, j })}
@@ -139,10 +139,10 @@ export function AttentionGrid() {
               }),
             )}
 
-            <text x={pad - 10} y={20} textAnchor="end" className="fill-ink-700/40 font-mono text-[8px] tracking-widest uppercase">
+            <text x={pad - 10} y={20} textAnchor="end" className="fill-faint font-mono text-[8px] tracking-widest uppercase">
               query
             </text>
-            <text x={pad + n * size} y={pad + n * size + 26} textAnchor="end" className="fill-ink-700/40 font-mono text-[8px] tracking-widest uppercase">
+            <text x={pad + n * size} y={pad + n * size + 26} textAnchor="end" className="fill-faint font-mono text-[8px] tracking-widest uppercase">
               key
             </text>
           </svg>
@@ -150,11 +150,11 @@ export function AttentionGrid() {
 
         <div className="flex flex-col justify-between p-5 sm:p-7">
           <div>
-            <p className="mono-label text-turq-600">head · {HEADS[head].name}</p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-700">
+            <p className="mono-label text-accent">head · {HEADS[head].name}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">
               {HEADS[head].note}
             </p>
-            <p className="mt-5 text-[0.8125rem] leading-relaxed text-ink-600/70">
+            <p className="mt-5 text-[0.8125rem] leading-relaxed text-dim">
               The greyed upper triangle is the causal mask: a token cannot attend
               to what has not been written yet. Reading these patterns is how we
               decide whether a tutoring model is following the structure of a
@@ -162,26 +162,26 @@ export function AttentionGrid() {
             </p>
           </div>
 
-          <div className="mt-8 rounded-xl border border-line bg-mist/50 p-4">
+          <div className="mt-8 rounded-xl border border-line bg-surface-3/70 p-4">
             {cell ? (
               <div className="font-mono text-[0.75rem] leading-relaxed">
-                <div className="flex justify-between text-ink-600/60">
+                <div className="flex justify-between text-faint">
                   <span>query[{cell.i}]</span>
-                  <span className="text-ink-900">{TOKENS[cell.i]}</span>
+                  <span className="text-ink">{TOKENS[cell.i]}</span>
                 </div>
-                <div className="mt-1 flex justify-between text-ink-600/60">
+                <div className="mt-1 flex justify-between text-faint">
                   <span>key[{cell.j}]</span>
-                  <span className="text-ink-900">{TOKENS[cell.j]}</span>
+                  <span className="text-ink">{TOKENS[cell.j]}</span>
                 </div>
                 <div className="mt-3 flex items-center justify-between border-t border-line pt-3">
-                  <span className="text-ink-600/60">weight</span>
-                  <span className="tabular-nums text-turq-700">
+                  <span className="text-faint">weight</span>
+                  <span className="tabular-nums text-accent">
                     {cell.j > cell.i ? "masked" : rows[cell.i][cell.j].toFixed(4)}
                   </span>
                 </div>
               </div>
             ) : (
-              <p className="font-mono text-[0.75rem] text-ink-600/45">
+              <p className="font-mono text-[0.75rem] text-faint">
                 hover a cell to read the weight
                 <span className="ml-0.5 inline-block animate-blink">▍</span>
               </p>

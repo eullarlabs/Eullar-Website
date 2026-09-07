@@ -23,17 +23,17 @@ export function ProductShowcase() {
               className={cn(
                 "group relative overflow-hidden rounded-2xl border px-5 py-4 text-left transition-all duration-400",
                 idx === i
-                  ? "border-ink-900 bg-ink-900 text-white shadow-[0_20px_50px_-26px_rgba(4,25,27,0.8)]"
-                  : "border-line bg-white text-ink-900 hover:border-turq-300",
+                  ? "border-ink bg-ink text-surface shadow-[0_20px_50px_-26px_rgba(4,25,27,0.8)]"
+                  : "border-line bg-surface-2 text-ink hover:border-accent/40",
               )}
               aria-pressed={idx === i}
             >
               <span className="flex items-center gap-2">
-                <span className="font-display text-lg font-semibold">{pr.name}</span>
+                <span className="font-sans text-[1.0625rem] font-medium">{pr.name}</span>
                 <span
                   className={cn(
                     "mono-label rounded-full px-1.5 py-0.5 text-[0.5rem]",
-                    idx === i ? "bg-white/12 text-turq-300" : "bg-mist text-ink-600/70",
+                    idx === i ? "bg-surface-2/12 text-accent" : "bg-surface-3 text-dim",
                   )}
                 >
                   {pr.index}
@@ -42,7 +42,7 @@ export function ProductShowcase() {
               <span
                 className={cn(
                   "mt-1 block text-[0.8125rem]",
-                  idx === i ? "text-white/60" : "text-ink-600/70",
+                  idx === i ? "text-dim" : "text-dim",
                 )}
               >
                 {pr.kind}
@@ -60,12 +60,12 @@ export function ProductShowcase() {
             transition={{ duration: 0.3 }}
             className="max-w-xl lg:text-right"
           >
-            <p className="text-[1.0625rem] leading-relaxed text-ink-700">
+            <p className="text-[1.0625rem] leading-relaxed text-ink">
               {p.oneLiner}
             </p>
             <Link
               href={p.href}
-              className="group mt-2 inline-flex items-center gap-2 mono-label text-turq-700 transition-colors hover:text-ink-900"
+              className="group mt-2 inline-flex items-center gap-2 mono-label text-accent transition-colors hover:text-ink"
             >
               Open {p.name}
               <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>

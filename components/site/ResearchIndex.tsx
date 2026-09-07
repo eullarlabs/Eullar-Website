@@ -26,21 +26,21 @@ export function ResearchIndex() {
             className={cn(
               "relative shrink-0 rounded-full border px-4 py-2 text-[0.8125rem] font-medium transition-colors",
               area === a
-                ? "border-ink-900 text-white"
-                : "border-line bg-white text-ink-600 hover:border-turq-300 hover:text-ink-900",
+                ? "border-ink text-surface"
+                : "border-line bg-surface-2 text-dim hover:border-accent/40 hover:text-ink",
             )}
           >
             {area === a && (
               <motion.span
                 layoutId="ri-pill"
-                className="absolute inset-0 rounded-full bg-ink-900"
+                className="absolute inset-0 rounded-full bg-ink"
                 transition={{ type: "spring", stiffness: 380, damping: 32 }}
               />
             )}
             <span className="relative">{a}</span>
           </button>
         ))}
-        <span className="ml-auto hidden shrink-0 items-center mono-label text-ink-600/40 sm:flex">
+        <span className="ml-auto hidden shrink-0 items-center mono-label text-faint sm:flex">
           {notes.length} {notes.length === 1 ? "note" : "notes"}
         </span>
       </div>

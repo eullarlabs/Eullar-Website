@@ -13,7 +13,7 @@ const INTERESTS = [
 ] as const;
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[0.9375rem] text-ink-900 placeholder:text-ink-600/35 transition-colors focus:border-turq-400 focus:outline-none";
+  "w-full rounded-xl border border-line bg-surface-2 px-4 py-3 text-[0.9375rem] text-ink placeholder:text-faint transition-colors focus:border-accent/50 focus:outline-none";
 
 export function ContactForm() {
   const [interest, setInterest] = useState<string>("syllabi");
@@ -38,11 +38,11 @@ export function ContactForm() {
 
   return (
     <form
-      className="rounded-3xl border border-line bg-white p-6 sm:p-8"
+      className="rounded-3xl border border-line bg-surface-2 p-6 sm:p-8"
       onSubmit={(e) => e.preventDefault()}
     >
       <fieldset>
-        <legend className="mono-label text-ink-600/50">What is this about</legend>
+        <legend className="mono-label text-faint">What is this about</legend>
         <div className="mt-3 flex flex-wrap gap-2">
           {INTERESTS.map((i) => (
             <button
@@ -53,14 +53,14 @@ export function ContactForm() {
               className={cn(
                 "relative rounded-full border px-4 py-2 text-[0.8125rem] font-medium transition-colors",
                 interest === i.id
-                  ? "border-ink-900 text-white"
-                  : "border-line text-ink-600 hover:border-turq-300 hover:text-ink-900",
+                  ? "border-ink text-surface"
+                  : "border-line text-dim hover:border-accent/40 hover:text-ink",
               )}
             >
               {interest === i.id && (
                 <motion.span
                   layoutId="cf-pill"
-                  className="absolute inset-0 rounded-full bg-ink-900"
+                  className="absolute inset-0 rounded-full bg-ink"
                   transition={{ type: "spring", stiffness: 380, damping: 32 }}
                 />
               )}
@@ -72,7 +72,7 @@ export function ContactForm() {
 
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         <label className="block">
-          <span className="mono-label text-ink-600/50">Name</span>
+          <span className="mono-label text-faint">Name</span>
           <input
             className={cn(field, "mt-2")}
             value={name}
@@ -82,7 +82,7 @@ export function ContactForm() {
           />
         </label>
         <label className="block">
-          <span className="mono-label text-ink-600/50">Organisation</span>
+          <span className="mono-label text-faint">Organisation</span>
           <input
             className={cn(field, "mt-2")}
             value={org}
@@ -94,7 +94,7 @@ export function ContactForm() {
       </div>
 
       <label className="mt-4 block">
-        <span className="mono-label text-ink-600/50">Reply-to address</span>
+        <span className="mono-label text-faint">Reply-to address</span>
         <input
           className={cn(field, "mt-2")}
           value={email}
@@ -106,7 +106,7 @@ export function ContactForm() {
       </label>
 
       <label className="mt-4 block">
-        <span className="mono-label text-ink-600/50">
+        <span className="mono-label text-faint">
           What breaks today
         </span>
         <textarea
@@ -118,7 +118,7 @@ export function ContactForm() {
       </label>
 
       <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-xs text-[0.75rem] leading-relaxed text-ink-600/55">
+        <p className="max-w-xs text-[0.75rem] leading-relaxed text-faint">
           This opens a draft in your own mail client — nothing is transmitted
           from this page.
         </p>
@@ -128,8 +128,8 @@ export function ContactForm() {
           className={cn(
             "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.9375rem] font-medium transition-all duration-300",
             ready
-              ? "bg-ink-900 text-white hover:bg-turq-600"
-              : "cursor-not-allowed bg-haze text-ink-600/40",
+              ? "bg-ink text-surface hover:bg-accent hover:text-[#06100f]"
+              : "cursor-not-allowed bg-surface-3 text-faint",
           )}
         >
           Compose the email

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/site/Section";
 import { Eyebrow, SectionHeader, Frame } from "@/components/site/Bits";
-import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ContactForm } from "@/components/site/ContactForm";
 import { LatentField } from "@/components/viz/LatentField";
 import { SITE } from "@/lib/content";
@@ -37,7 +37,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden pt-36 pb-14 sm:pt-44 sm:pb-16">
-        <div className="grid-paper absolute inset-0 mask-b opacity-60" />
+        <div className="rule-grid absolute inset-0 mask-b opacity-60" />
         <div className="absolute inset-0 opacity-70">
           <LatentField density={0.5} />
         </div>
@@ -46,14 +46,14 @@ export default function ContactPage() {
             <Eyebrow>Contact</Eyebrow>
           </Reveal>
           <Reveal immediate delay={0.06}>
-            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink-900">
+            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink">
               Tell us the hard
               <br />
               version of the problem.
             </h1>
           </Reveal>
           <Reveal immediate delay={0.12}>
-            <p className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-ink-600/90">
+            <p className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-dim">
               We would rather hear what is broken than what you would like to
               buy. If we are not the right tool for it, we will say so in the
               first reply.
@@ -72,16 +72,16 @@ export default function ContactPage() {
             <RevealGroup className="space-y-4">
               {ROUTES.map((r) => (
                 <RevealItem key={r.id}>
-                  <div id={r.id} className="scroll-mt-32 rounded-2xl border border-line bg-white p-6 transition-colors hover:border-turq-300">
+                  <div id={r.id} className="scroll-mt-32 rounded-2xl border border-line bg-surface-2 p-6 transition-colors hover:border-accent/40">
                     <div className="flex items-baseline justify-between gap-4">
-                      <h2 className="font-display text-[1.0625rem] font-semibold text-ink-900">
+                      <h2 className="font-sans text-[1.0625rem] font-medium text-ink">
                         {r.label}
                       </h2>
-                      <span className="mono-label text-[0.5625rem] text-turq-600">
+                      <span className="mono-label text-[0.5625rem] text-accent">
                         {r.turnaround}
                       </span>
                     </div>
-                    <p className="mt-3 text-[0.875rem] leading-relaxed text-ink-600/85">
+                    <p className="mt-3 text-[0.875rem] leading-relaxed text-dim">
                       {r.body}
                     </p>
                   </div>
@@ -95,10 +95,10 @@ export default function ContactPage() {
                   href={`mailto:${SITE.email}`}
                   className="group flex items-center justify-between gap-4"
                 >
-                  <span className="font-mono text-[0.9375rem] text-ink-900 transition-colors group-hover:text-turq-700">
+                  <span className="font-mono text-[0.9375rem] text-ink transition-colors group-hover:text-accent">
                     {SITE.email}
                   </span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-1 text-turq-600" aria-hidden>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1 text-accent" aria-hidden>
                     →
                   </span>
                 </a>
@@ -109,8 +109,8 @@ export default function ContactPage() {
                     ["founded", String(SITE.founded)],
                   ].map(([k, v]) => (
                     <div key={k} className="flex items-baseline justify-between">
-                      <span className="mono-label text-ink-600/45">{k}</span>
-                      <span className="font-mono text-[0.75rem] text-ink-700">{v}</span>
+                      <span className="mono-label text-faint">{k}</span>
+                      <span className="font-mono text-[0.75rem] text-ink">{v}</span>
                     </div>
                   ))}
                 </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <Section className="border-t border-line py-20 sm:py-24">
+      <Section tone="paper" className="py-20 sm:py-24">
         <Reveal>
           <SectionHeader
             align="center"
@@ -135,9 +135,9 @@ export default function ContactPage() {
             ["The constraint", "Data residency, budget, connectivity, procurement. Tell us early; it shapes what we propose."],
           ].map(([t, d]) => (
             <RevealItem key={t}>
-              <div className="h-full bg-white p-6">
-                <h3 className="font-display text-[0.9375rem] font-semibold text-ink-900">{t}</h3>
-                <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-600/85">{d}</p>
+              <div className="h-full bg-surface-2 p-6">
+                <h3 className="font-sans text-[0.9375rem] font-medium text-ink">{t}</h3>
+                <p className="mt-2 text-[0.875rem] leading-relaxed text-dim">{d}</p>
               </div>
             </RevealItem>
           ))}

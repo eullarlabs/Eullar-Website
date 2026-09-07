@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/site/Section";
 import { Eyebrow, SectionHeader, Frame } from "@/components/site/Bits";
 import { Button } from "@/components/site/Button";
-import { Reveal, RevealGroup, RevealItem } from "@/components/site/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ResearchIndex } from "@/components/site/ResearchIndex";
 import { AttentionGrid } from "@/components/viz/AttentionGrid";
 import { ResearchTerminal } from "@/components/viz/ResearchTerminal";
@@ -41,7 +41,7 @@ export default function ResearchPage() {
   return (
     <>
       <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
-        <div className="grid-paper absolute inset-0 mask-b opacity-60" />
+        <div className="rule-grid absolute inset-0 mask-b opacity-60" />
         <div className="absolute inset-0 opacity-80">
           <LatentField density={0.6} />
         </div>
@@ -51,14 +51,14 @@ export default function ResearchPage() {
             <Eyebrow>Working notes</Eyebrow>
           </Reveal>
           <Reveal immediate delay={0.06}>
-            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink-900">
+            <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink">
               Research we are
               <br />
               willing to be wrong about.
             </h1>
           </Reveal>
           <Reveal immediate delay={0.12}>
-            <p className="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-600/90 sm:text-lg">
+            <p className="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-dim sm:text-lg">
               Everything here comes out of a deployed system. We publish the
               method, the measure, and the result — including the runs that
               closed a line of work rather than opening one.
@@ -75,7 +75,7 @@ export default function ResearchPage() {
       </Section>
 
       {/* figure */}
-      <Section className="border-t border-line bg-mist/40 py-24 sm:py-32">
+      <Section tone="paper" className="py-24 sm:py-32">
         <Reveal>
           <SectionHeader
             eyebrow="Interpretability"
@@ -99,12 +99,12 @@ export default function ResearchPage() {
               {METHOD.map((m) => (
                 <RevealItem key={m.n}>
                   <div className="flex gap-5">
-                    <span className="font-mono text-[0.6875rem] text-turq-500">{m.n}</span>
+                    <span className="font-mono text-[0.6875rem] text-accent">{m.n}</span>
                     <div>
-                      <h3 className="font-display text-[1.0625rem] font-semibold text-ink-900">
+                      <h3 className="font-sans text-[1.0625rem] font-medium text-ink">
                         {m.t}
                       </h3>
-                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600/85">
+                      <p className="mt-2 text-[0.9375rem] leading-relaxed text-dim">
                         {m.d}
                       </p>
                     </div>
@@ -118,7 +118,7 @@ export default function ResearchPage() {
             <div className="lg:sticky lg:top-28">
               <ResearchTerminal />
               <Frame label="reading" className="mt-6 p-6">
-                <p className="text-[0.9375rem] leading-relaxed text-ink-700">
+                <p className="text-[0.9375rem] leading-relaxed text-ink">
                   In that run the proxy we could have reported — immediate
                   accuracy — moved by two points. The measure we committed to
                   before starting, recall at fourteen days, moved by seventeen.
@@ -131,22 +131,22 @@ export default function ResearchPage() {
       </Section>
 
       {/* collaborate */}
-      <section className="relative overflow-hidden border-t border-line bg-ink-900 py-24 sm:py-28">
-        <div className="grid-paper-dark absolute inset-0 opacity-60" />
+      <section className="relative overflow-hidden border-t border-line bg-ink py-24 sm:py-28">
+        <div className="rule-grid absolute inset-0 opacity-60" />
         <div className="relative mx-auto max-w-[86rem] px-6">
           <div className="max-w-2xl">
-            <Eyebrow onDark>Collaborate</Eyebrow>
-            <h2 className="mt-6 text-[clamp(1.9rem,4.6vw,3.25rem)] font-semibold leading-[1.03] text-white">
+            <Eyebrow>Collaborate</Eyebrow>
+            <h2 className="mt-6 text-[clamp(1.9rem,4.6vw,3.25rem)] font-semibold leading-[1.03] text-surface">
               We would rather run the study on a deployed system than on a
               benchmark.
             </h2>
-            <p className="mt-6 text-[1.0625rem] leading-relaxed text-white/55">
+            <p className="mt-6 text-[1.0625rem] leading-relaxed text-dim">
               If you research learning, labour markets or evaluation and want
               access to a system in the field, write to us. We share methods and
               aggregate results; we do not share customer data.
             </p>
             <div className="mt-9">
-              <Button href="/contact#collaborate" variant="onDark">
+              <Button href="/contact#collaborate" variant="primary">
                 Propose a collaboration
               </Button>
             </div>

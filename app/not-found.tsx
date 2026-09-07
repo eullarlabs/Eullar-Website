@@ -6,19 +6,19 @@ import { PRODUCTS } from "@/lib/content";
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[86svh] items-center overflow-hidden pt-32">
-      <div className="grid-paper absolute inset-0 mask-radial opacity-70" />
+      <div className="rule-grid absolute inset-0 mask-radial opacity-70" />
       <div className="absolute inset-0">
         <LatentField density={0.7} />
       </div>
 
       <div className="relative mx-auto w-full max-w-[86rem] px-6">
-        <p className="mono-label text-turq-700">error · 404</p>
-        <h1 className="mt-6 max-w-3xl text-[clamp(2.6rem,8vw,6rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-ink-900">
+        <p className="mono-label text-accent">error · 404</p>
+        <h1 className="mt-6 max-w-3xl text-[clamp(2.6rem,8vw,6rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-ink">
           No node at
           <br />
           this address.
         </h1>
-        <p className="mt-7 max-w-lg text-[1.0625rem] leading-relaxed text-ink-600/90">
+        <p className="mt-7 max-w-lg text-[1.0625rem] leading-relaxed text-dim">
           The page you asked for is not in the graph. These are the edges that do
           exist.
         </p>
@@ -33,7 +33,7 @@ export default function NotFound() {
             <Link
               key={p.slug}
               href={p.href}
-              className="group mono-label text-ink-600/60 transition-colors hover:text-turq-700"
+              className="group mono-label text-faint transition-colors hover:text-accent"
             >
               {p.index} · {p.name}
               <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
