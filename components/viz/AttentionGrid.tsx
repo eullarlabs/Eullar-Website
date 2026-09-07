@@ -126,7 +126,7 @@ export function AttentionGrid() {
                     fill={
                       masked
                         ? "var(--surface-3)"
-                        : `color-mix(in oklab, var(--data-teal) ${Math.min(100, v * 260)}%, white)`
+                        : `color-mix(in oklab, var(--data-teal) ${Math.min(100, v * 260)}%, var(--surface))`
                     }
                     stroke={cell?.i === i && cell?.j === j ? "var(--ink)" : "transparent"}
                     strokeWidth="1.5"

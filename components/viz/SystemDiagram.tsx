@@ -28,10 +28,15 @@ function Box({
   tone?: "line" | "turq" | "ink";
   active?: boolean;
 }) {
-  const fill = tone === "ink" ? "var(--ink)" : tone === "turq" ? "var(--accent-soft)" : "#fff";
-  const stroke = tone === "ink" ? "var(--ink)" : tone === "turq" ? "var(--accent)" : "var(--line-2)";
-  const text = tone === "ink" ? "#fff" : "var(--ink)";
-  const subText = tone === "ink" ? "rgba(255,255,255,.55)" : "var(--dim)";
+  /* `ink` is the inverted emphasis box, so its label flips to the surface
+     colour. Nothing here is a raw hex — the whole diagram follows its band. */
+  const fill =
+    tone === "ink" ? "var(--ink)" : tone === "turq" ? "var(--accent-soft)" : "var(--surface-2)";
+  const stroke =
+    tone === "ink" ? "var(--ink)" : tone === "turq" ? "var(--accent)" : "var(--line-2)";
+  const text = tone === "ink" ? "var(--surface)" : "var(--ink)";
+  const subText = tone === "ink" ? "var(--surface)" : "var(--dim)";
+  const subOpacity = tone === "ink" ? 0.62 : 1;
 
   return (
     <motion.g variants={box} custom={i} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-15%" }}>
@@ -42,11 +47,11 @@ function Box({
         strokeWidth={active ? 2 : 1.4}
         style={{ transition: "fill .5s, stroke .5s, stroke-width .5s" }}
       />
-      <text x={x + 18} y={y + (sub ? 30 : h / 2 + 4)} fill={text} className="font-display text-[15px] font-semibold">
+      <text x={x + 18} y={y + (sub ? 30 : h / 2 + 4)} fill={text} className="font-display text-[15px]">
         {title}
       </text>
       {sub && (
-        <text x={x + 18} y={y + 50} fill={subText} className="font-mono text-[10px]">
+        <text x={x + 18} y={y + 50} fill={subText} opacity={subOpacity} className="font-mono text-[10px]">
           {sub}
         </text>
       )}

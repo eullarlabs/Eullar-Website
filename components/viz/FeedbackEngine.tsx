@@ -269,7 +269,7 @@ export function FeedbackEngine() {
                         style={{
                           background: isGap
                             ? "var(--data-clay)"
-                            : `color-mix(in oklab, var(--data-teal) ${Math.round(55 + v * 45)}%, white)`,
+                            : `color-mix(in oklab, var(--data-teal) ${Math.round(55 + v * 45)}%, var(--surface))`,
                         }}
                         initial={{ width: 0 }}
                         animate={{ width: `${v * 100}%` }}
