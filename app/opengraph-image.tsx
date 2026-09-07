@@ -15,10 +15,9 @@ export default function OG() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#ffffff",
+          background: "#0b1413",
           backgroundImage:
-            "linear-gradient(to right, #E1EDEB 1px, transparent 1px), linear-gradient(to bottom, #E1EDEB 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
+            "radial-gradient(circle at 78% 22%, rgba(123,121,215,0.30), transparent 55%), radial-gradient(circle at 16% 76%, rgba(131,207,203,0.26), transparent 55%)",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -26,14 +25,15 @@ export default function OG() {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div
             style={{
-              width: 56,
-              height: 56,
-              borderRadius: 16,
-              background: "linear-gradient(135deg, #31C6BA, #0C6E69)",
+              width: 54,
+              height: 54,
+              borderRadius: 999,
+              border: "13px solid #6DBFC8",
+              transform: "rotate(-19deg) scaleX(1.5)",
               display: "flex",
             }}
           />
-          <div style={{ fontSize: 34, fontWeight: 700, color: "#04191B", letterSpacing: "-0.03em" }}>
+          <div style={{ fontSize: 32, fontWeight: 600, color: "#efede4", letterSpacing: "-0.02em" }}>
             Eullar Labs
           </div>
         </div>
@@ -41,24 +41,23 @@ export default function OG() {
         <div
           style={{
             display: "flex",
-            fontSize: 76,
-            lineHeight: 1.05,
-            fontWeight: 700,
-            color: "#04191B",
-            letterSpacing: "-0.045em",
-            maxWidth: 940,
+            fontSize: 78,
+            lineHeight: 1.04,
+            color: "#efede4",
+            letterSpacing: "-0.035em",
+            maxWidth: 960,
           }}
         >
-          Applied AI research, shipped as tools people use.
+          AI that has to work on a Tuesday morning.
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <div style={{ display: "flex", gap: 28, fontSize: 22, color: "#0A8B82", letterSpacing: "0.16em" }}>
+          <div style={{ display: "flex", gap: 26, fontSize: 21, color: "#5fd4c3", letterSpacing: "0.16em" }}>
             <div style={{ display: "flex" }}>SYLLABI</div>
-            <div style={{ display: "flex", color: "#C9DEDB" }}>·</div>
-            <div style={{ display: "flex" }}>REEVUE</div>
+            <div style={{ display: "flex", color: "#8e8be0" }}>·</div>
+            <div style={{ display: "flex", color: "#8e8be0" }}>REEVUE</div>
           </div>
-          <div style={{ display: "flex", fontSize: 22, color: "#16504F", letterSpacing: "0.16em" }}>
+          <div style={{ display: "flex", fontSize: 21, color: "rgba(239,237,228,0.45)", letterSpacing: "0.16em" }}>
             ACCRA · REMOTE
           </div>
         </div>

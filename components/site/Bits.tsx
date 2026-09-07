@@ -90,12 +90,13 @@ export function Pill({
   className,
 }: {
   children: ReactNode;
-  tone?: "accent" | "clay" | "quiet";
+  tone?: "accent" | "clay" | "iris" | "quiet";
   className?: string;
 }) {
   const tones = {
     accent: "border-accent/30 bg-accent-soft text-accent",
     clay: "border-clay/35 bg-clay/10 text-clay",
+    iris: "border-iris/35 bg-[var(--iris-soft)] text-iris",
     quiet: "border-line-2 bg-surface-2 text-dim",
   } as const;
   return (

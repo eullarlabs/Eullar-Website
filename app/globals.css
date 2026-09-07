@@ -22,6 +22,7 @@
   --color-accent-2: var(--accent-2);
   --color-accent-soft: var(--accent-soft);
   --color-clay: var(--clay);
+  --color-iris: var(--iris);
   --color-data-teal: var(--data-teal);
   --color-data-clay: var(--data-clay);
 
@@ -52,6 +53,8 @@
   --accent-2: #2fa697;
   --accent-soft: rgb(95 212 195 / 0.13);
   --clay: #d89a6a;
+  --iris: #8e8be0;             /* the mark's periwinkle */
+  --iris-soft: rgb(142 139 224 / 0.14);
   /* Data marks, validated against #0b1413:
      deutan ΔE 11.2 · normal ΔE 22.4 · contrast >= 3:1 · L in band */
   --data-teal: #14a392;
@@ -73,6 +76,8 @@
   --accent-2: #08544d;
   --accent-soft: rgb(11 111 102 / 0.10);
   --clay: #a9552c;
+  --iris: #5b57be;
+  --iris-soft: rgb(91 87 190 / 0.10);
   /* Data marks, validated against #f3f0e8:
      deutan ΔE 11.5 · normal ΔE 23.8 · contrast >= 3:1 · L in band */
   --data-teal: #008b7e;

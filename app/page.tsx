@@ -109,7 +109,7 @@ export default function Home() {
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="font-display text-2xl">{p.name}</span>
-                      <Pill tone={p.accent === "turq" ? "accent" : "clay"}>{p.status}</Pill>
+                      <Pill tone={p.accent === "turq" ? "accent" : "iris"}>{p.status}</Pill>
                     </div>
                     <p className="mt-4 leading-relaxed text-dim">{p.oneLiner}</p>
                   </div>

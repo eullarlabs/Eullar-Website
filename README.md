@@ -46,13 +46,36 @@ lib/content.ts             all copy, products, notes, principles, FAQ
 | `viz/SystemDiagram` | home, about | Blueprint of the stack; connectors draw on scroll. |
 | `viz/ResearchTerminal` | home, research | Typed evaluation log, starts when scrolled into view. |
 
+## The mark
+
+`components/site/Logo.tsx` draws the Möbius mark as inline SVG — one surface
+returning to itself, mint → blue → indigo with the underside showing at the
+fold. Its gradients and clip path are declared once per document by `LogoDefs`
+in the root layout, so repeating the mark costs one `<svg>` and no duplicate
+element ids.
+
+**This is a redraw, not the original artwork.** It was rebuilt from a reference
+image because the source file was not available. To swap in the real asset:
+drop it into `public/` and replace the `<svg>` inside `LogoMark` with an
+`<img>`. Nothing else in the codebase references the geometry. The same drawing
+is also committed at `public/eullar-mark.svg`, `app/icon.svg` (favicon) and
+`app/apple-icon.png` (touch icon, 180×180 — Next only accepts raster here).
+
 ## Colour
 
-Brand tokens are in `app/globals.css`. Data marks use `--color-data-teal`
-(`#0F9E92`) and the reserved status colour `--color-data-flag` (`#DD4E2E`) —
-this pair is validated for colour-vision separation against a light surface
-(deutan ΔE 13.2, normal ΔE 28.1, contrast ≥ 3:1). Ordinal encodings use a single
-turquoise ramp; `data-flag` never ships without a text label beside it.
+Two skins, defined in `app/globals.css`. Sections declare `data-skin="ink"` or
+`"paper"` and the whole subtree — figures included — re-tunes through CSS
+variables, so a figure never needs to know which band it landed on.
+
+Nothing is pure white or pure black. Ink is `#0b1413` with warm off-white
+`#efede4`; paper is a warm cream `#f3f0e8`. The mark supplies both brand
+colours: turquoise as the primary, its periwinkle (`--iris`) as the secondary.
+
+Data marks are validated per surface with the dataviz palette validator —
+ink `#14a392` / `#cb7044`, paper `#008b7e` / `#be5230` — both passing all six
+checks (lightness band, chroma floor, CVD separation, normal-vision floor and
+contrast). Ordinal encodings use a single teal ramp mixed toward the current
+surface; the reserved status colour never ships without a text label.
 
 ## Before launch
 

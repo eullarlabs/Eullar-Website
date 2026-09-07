@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans, Martian_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/site/Nav";
+import { LogoDefs } from "@/components/site/Logo";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress, Grain } from "@/components/site/Chrome";
 import { SITE } from "@/lib/content";
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;filter:none!important;transform:none!important;clip-path:none!important}`}</style>
         </noscript>
+        <LogoDefs />
         <ScrollProgress />
         <Grain />
         <Nav />

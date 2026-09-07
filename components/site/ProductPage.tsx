@@ -32,7 +32,7 @@ export function ProductPage({
           <Reveal immediate>
             <div className="flex flex-wrap items-center gap-3">
               <Eyebrow>{product.index} · {product.kind}</Eyebrow>
-              <Pill tone={product.accent === "turq" ? "accent" : "clay"}>
+              <Pill tone={product.accent === "turq" ? "accent" : "iris"}>
                 {product.status}
               </Pill>
             </div>

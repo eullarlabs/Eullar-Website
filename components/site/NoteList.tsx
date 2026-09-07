@@ -6,11 +6,11 @@ import type { Note } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const areaTone: Record<Note["area"], string> = {
-  Alignment: "text-clay border-clay/30 bg-clay/10",
+  Alignment: "text-iris border-iris/30 bg-[var(--iris-soft)]",
   Evaluation: "text-accent border-accent/30 bg-accent-soft",
   "Learning science": "text-accent border-accent/30 bg-accent-soft",
   Systems: "text-dim border-line bg-surface-3",
-  Interpretability: "text-clay border-clay/30 bg-clay/10",
+  Interpretability: "text-iris border-iris/30 bg-[var(--iris-soft)]",
 };
 
 export function NoteList({ notes }: { notes: Note[] }) {

@@ -11,7 +11,7 @@ export function Aurora() {
 
   const blobs = [
     { c: "var(--accent)", size: "44rem", x: "12%", y: "18%", d: 0, o: 0.3 },
-    { c: "var(--clay)", size: "34rem", x: "72%", y: "26%", d: 3.5, o: 0.16 },
+    { c: "var(--iris)", size: "36rem", x: "72%", y: "24%", d: 3.5, o: 0.22 },
     { c: "var(--accent-2)", size: "38rem", x: "52%", y: "76%", d: 7, o: 0.22 },
   ];
 
