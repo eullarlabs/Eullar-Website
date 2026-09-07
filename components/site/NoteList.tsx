@@ -31,7 +31,7 @@ export function NoteList({ notes }: { notes: Note[] }) {
                 {n.id}
               </span>
 
-              <span>
+              <span className="min-w-0">
                 <span
                   className={cn(
                     "block font-display text-[1.0625rem] font-medium leading-snug transition-colors sm:text-[1.25rem]",

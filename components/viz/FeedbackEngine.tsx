@@ -165,7 +165,7 @@ export function FeedbackEngine() {
       </div>
 
       {/* pipeline */}
-      <div className="no-scrollbar overflow-x-auto border-b border-line bg-white px-4 py-3">
+      <div className="no-scrollbar min-w-0 overflow-x-auto border-b border-line bg-white px-4 py-3">
         <div className="flex min-w-[620px] items-center gap-2">
           {PIPELINE.map((s, i) => (
             <div key={s} className="flex flex-1 items-center gap-2">

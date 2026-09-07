@@ -29,7 +29,7 @@ export function ProductPage({
         </div>
 
         <div className="relative mx-auto max-w-[86rem] px-6">
-          <Reveal>
+          <Reveal immediate>
             <div className="flex flex-wrap items-center gap-3">
               <Eyebrow>{product.index} · {product.kind}</Eyebrow>
               <Pill tone={product.accent === "turq" ? "turq" : "iris"}>
@@ -38,14 +38,14 @@ export function ProductPage({
             </div>
           </Reveal>
 
-          <Reveal delay={0.06}>
+          <Reveal immediate delay={0.06}>
             <h1 className="mt-7 text-[clamp(3rem,10vw,7.5rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-ink-900">
               {product.name}
             </h1>
           </Reveal>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-            <Reveal delay={0.12}>
+            <Reveal immediate delay={0.12} className="min-w-0">
               <p className="font-editorial text-[clamp(1.5rem,3.4vw,2.35rem)] leading-[1.15] tracking-[-0.02em] text-ink-900">
                 {product.oneLiner}
               </p>
@@ -60,7 +60,7 @@ export function ProductPage({
               </div>
             </Reveal>
 
-            <Reveal delay={0.18}>
+            <Reveal immediate delay={0.18} className="min-w-0">
               <Frame label="spec" className="p-5 sm:p-6">
                 <dl className="divide-y divide-line">
                   {product.stack.map((s) => (

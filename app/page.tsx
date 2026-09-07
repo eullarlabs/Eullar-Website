@@ -25,11 +25,11 @@ export default function Home() {
         />
 
         <div className="relative mx-auto w-full max-w-[86rem] px-6">
-          <Reveal>
+          <Reveal immediate>
             <Eyebrow>Applied AI research · Accra</Eyebrow>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal immediate delay={0.08}>
             <h1 className="mt-7 max-w-5xl text-[clamp(2.6rem,7.2vw,6rem)] font-semibold leading-[0.95] tracking-[-0.045em] text-ink-900">
               Applied AI research,
               <br />
@@ -54,7 +54,7 @@ export default function Home() {
             </h1>
           </Reveal>
 
-          <Reveal delay={0.16}>
+          <Reveal immediate delay={0.16}>
             <p className="mt-9 max-w-xl text-[1.0625rem] leading-relaxed text-ink-600/90 sm:text-lg">
               Eullar Labs builds practical AI systems and advances what is known
               about them. Two products are in the field today:{" "}
@@ -69,7 +69,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.24}>
+          <Reveal immediate delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Button href="/contact">Request access</Button>
               <Button href="/research" variant="secondary">
@@ -79,7 +79,7 @@ export default function Home() {
           </Reveal>
 
           {/* coordinate strip */}
-          <Reveal delay={0.34}>
+          <Reveal immediate delay={0.34}>
             <dl className="mt-16 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
               {[
                 ["products in field", "02"],
@@ -146,9 +146,9 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="min-w-0">
             <div className="relative">
-              <div className="absolute -inset-4 rounded-[2rem] bg-turq-100/40 blur-2xl" />
+              <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-turq-100/50 blur-2xl" />
               <ResearchTerminal className="relative" />
               <p className="mono-label mt-4 text-ink-600/45">
                 fig. 0 — an evaluation run, edited for length
@@ -241,7 +241,7 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.12}>
+          <Reveal delay={0.12} className="min-w-0">
             <Frame label="fig. 3 — system" className="p-4 sm:p-6">
               <SystemDiagram />
             </Frame>

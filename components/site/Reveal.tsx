@@ -10,7 +10,9 @@ type Props = {
   delay?: number;
   y?: number;
   once?: boolean;
-  as?: "div" | "span" | "li" | "section";
+  /** Animate on mount instead of on scroll — for above-the-fold content, which
+      must never depend on an IntersectionObserver that may not fire. */
+  immediate?: boolean;
 };
 
 export function Reveal({
@@ -19,6 +21,7 @@ export function Reveal({
   delay = 0,
   y = 22,
   once = true,
+  immediate = false,
 }: Props) {
   const reduce = useReducedMotion();
 
@@ -38,11 +41,16 @@ export function Reveal({
 
   return (
     <motion.div
+      data-reveal
       className={cn(className)}
       variants={variants}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once, margin: "-12% 0px -8% 0px" }}
+      {...(immediate
+        ? { animate: "show" }
+        : {
+            whileInView: "show",
+            viewport: { once, margin: "-12% 0px -8% 0px" },
+          })}
     >
       {children}
     </motion.div>
@@ -89,6 +97,7 @@ export function RevealItem({
   const reduce = useReducedMotion();
   return (
     <motion.div
+      data-reveal
       className={cn(className)}
       variants={{
         hidden: { opacity: 0, y: reduce ? 0 : y },

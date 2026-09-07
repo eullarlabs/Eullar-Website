@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/site/Nav";
@@ -54,13 +54,27 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#04191B" },
+  ],
+  colorScheme: "light",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper">
+        {/* Scroll-reveal wrappers render hidden and are animated in by JS.
+            Without JS there is nothing to animate them, so unhide them. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;filter:none!important;transform:none!important}`}</style>
+        </noscript>
         <ScrollProgress />
         <Grain />
         <CursorHalo />

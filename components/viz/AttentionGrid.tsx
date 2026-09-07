@@ -72,7 +72,7 @@ export function AttentionGrid() {
       </div>
 
       <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="no-scrollbar overflow-x-auto border-b border-line p-4 lg:border-b-0 lg:border-r sm:p-6">
+        <div className="no-scrollbar min-w-0 overflow-x-auto border-b border-line p-4 lg:border-b-0 lg:border-r sm:p-6">
           <svg
             viewBox={`0 0 ${pad + n * size + 14} ${pad + n * size + 14}`}
             className="block h-auto w-full min-w-[430px]"

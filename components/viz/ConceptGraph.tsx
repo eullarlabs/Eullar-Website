@@ -181,7 +181,7 @@ export function ConceptGraph() {
 
       <div className="grid lg:grid-cols-[1.55fr_1fr]">
         {/* Graph */}
-        <div className="no-scrollbar relative overflow-x-auto border-b border-line lg:border-b-0 lg:border-r">
+        <div className="no-scrollbar relative min-w-0 overflow-x-auto border-b border-line lg:border-b-0 lg:border-r">
           <div className="grid-paper-fine absolute inset-0 opacity-50" />
           <svg
             viewBox="0 0 736 430"
@@ -275,6 +275,8 @@ export function ConceptGraph() {
                   <motion.circle
                     cx={n.x}
                     cy={n.y}
+                    r={inRoute ? 15 : 11}
+                    initial={false}
                     animate={{ r: inRoute ? 15 : 11 }}
                     transition={{ type: "spring", stiffness: 260, damping: 24 }}
                     fill={tone.fill}

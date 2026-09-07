@@ -42,17 +42,17 @@ export default function ContactPage() {
           <LatentField density={0.5} />
         </div>
         <div className="relative mx-auto max-w-[86rem] px-6">
-          <Reveal>
+          <Reveal immediate>
             <Eyebrow>Contact</Eyebrow>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal immediate delay={0.06}>
             <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink-900">
               Tell us the hard
               <br />
               version of the problem.
             </h1>
           </Reveal>
-          <Reveal delay={0.12}>
+          <Reveal immediate delay={0.12}>
             <p className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-ink-600/90">
               We would rather hear what is broken than what you would like to
               buy. If we are not the right tool for it, we will say so in the

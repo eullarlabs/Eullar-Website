@@ -47,17 +47,17 @@ export default function ResearchPage() {
         </div>
 
         <div className="relative mx-auto max-w-[86rem] px-6">
-          <Reveal>
+          <Reveal immediate>
             <Eyebrow>Working notes</Eyebrow>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal immediate delay={0.06}>
             <h1 className="mt-7 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-ink-900">
               Research we are
               <br />
               willing to be wrong about.
             </h1>
           </Reveal>
-          <Reveal delay={0.12}>
+          <Reveal immediate delay={0.12}>
             <p className="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-600/90 sm:text-lg">
               Everything here comes out of a deployed system. We publish the
               method, the measure, and the result — including the runs that
@@ -114,7 +114,7 @@ export default function ResearchPage() {
             </RevealGroup>
           </div>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="min-w-0">
             <div className="lg:sticky lg:top-28">
               <ResearchTerminal />
               <Frame label="reading" className="mt-6 p-6">

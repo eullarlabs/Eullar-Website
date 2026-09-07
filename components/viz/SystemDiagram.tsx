@@ -56,7 +56,7 @@ function Box({
 
 export function SystemDiagram() {
   return (
-    <div className="no-scrollbar overflow-x-auto">
+    <div className="no-scrollbar min-w-0 overflow-x-auto">
       <svg viewBox="0 0 980 600" className="block h-auto w-full min-w-[760px]" role="img" aria-label="Eullar system diagram: products sit on a shared core of representation, evaluation and control, which sits on a swappable model layer">
         <defs>
           <marker id="sd-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
